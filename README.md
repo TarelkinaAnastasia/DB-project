@@ -15,13 +15,13 @@
 # Данные
 Категории товаров, Товары, Заказы, Корзина
 ## Для каждого элемента данных - ограничения
-Category[name(varchar 200), slug(varchar 200)]
+Category [name(varchar 200), slug(varchar 200)]
 
-Product[category(ForeignKey Category), name(varchar 200), slug(varchar 200), image(varchar 200), decription(text), price(decimal(10,2)), stock(integer), available(boolean), created(timestamp [ (0) ] [ without time zone ]), updated(timestamp [ (0) ] [ without time zone ])]
+Product [category(ForeignKey Category), name(varchar 200), slug(varchar 200), image(varchar 200), decription(text), price(decimal(10,2)), stock(integer), available(boolean), created(timestamp [ (0) ] [ without time zone ]), updated(timestamp [ (0) ] [ without time zone ])]
 
 Order [order id(integer), slug_product(ForeignKey Product), amount (integer), order_cost(decimal(10,2)) , created(timestamp [ (0) ] [ without time zone ]), updated(timestamp [ (0) ] [ without time zone ]), address(varchar 200), email(varchar 200), status(varchar 200)]
 
-Cart[django_session_id, product_id (id товара), amount (количество единиц данного товара в заказе)(integer), price (цена единицы товара)(decimal(10,2)).]
+Cart [django_session_id, product_id (id товара), amount (количество единиц данного товара в заказе)(integer), price (цена единицы товара)(decimal(10,2)).]
 ## Общие ограничения целостности
 При удалении категории - удаляются товары этой категории, но при наличии заказа с товаром - товар невозможно удалить.
 # Пользовательские роли
