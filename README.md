@@ -19,7 +19,7 @@ Category_1 [name(varchar 200), slug(varchar 200)]
 
 Category_2 [name(varchar 200), slug(varchar 200)]
 
-Product [category(ForeignKey Category), name(varchar 200), slug(varchar 200), image(varchar 200), decription(text), price(decimal(10,2)), stock(integer), available(boolean), created(timestamp [ (0) ] [ without time zone ]), updated(timestamp [ (0) ] [ without time zone ])]
+Product [category_1(ForeignKey Category_1), category_2(ForeignKey Category_2), name(varchar 200), slug(varchar 200), image(varchar 200), decription(text), price(decimal(10,2)), stock(integer), available(boolean), created(timestamp [ (0) ] [ without time zone ]), updated(timestamp [ (0) ] [ without time zone ])]
 
 Order [order id(integer), slug_product(ForeignKey Product), amount (integer), order_cost(decimal(10,2)) , created(timestamp [ (0) ] [ without time zone ]), updated(timestamp [ (0) ] [ without time zone ]), address(varchar 200), email(varchar 200), status(varchar 200)]
 
