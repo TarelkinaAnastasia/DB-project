@@ -13,9 +13,11 @@
 ## Предметная область
 Интернет-торговля
 # Данные
-Категории товаров, Товары, Заказы, Корзина
+Категории (вид), Категория (страна), Товары, Заказы, Корзина
 ## Для каждого элемента данных - ограничения
-Category [name(varchar 200), slug(varchar 200)]
+Category_1 [name(varchar 200), slug(varchar 200)]
+
+Category_2 [name(varchar 200), slug(varchar 200)]
 
 Product [category(ForeignKey Category), name(varchar 200), slug(varchar 200), image(varchar 200), decription(text), price(decimal(10,2)), stock(integer), available(boolean), created(timestamp [ (0) ] [ without time zone ]), updated(timestamp [ (0) ] [ without time zone ])]
 
