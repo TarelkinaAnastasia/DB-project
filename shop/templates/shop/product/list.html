@@ -1,0 +1,40 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% load mptt_tags %}
+{% block title %}
+    {% if category %}{{ category.name }}{% else %}Товары{% endif %}
+{% endblock %}
+{% block content %}
+    <div id="sidebar">
+        <h3>Категории</h3>
+        <ul>
+            <h4 {% if not category %}class="selected"{% endif %}>
+                <a href="{% url "shop:product_list" %}">Все товары</a>
+            </h4>
+
+            {% recursetree categories %}
+                <li {% if not node %}class="selected"{% endif %}>
+                    <a href="{{node.get_absolute_url}}">{{ node.name }}</a>
+                    {% if not node.is_leaf_node %}
+                        <ul class="children">
+                            <a href="{{ node.get_absolute_url }}">{{ children }}</a>
+                        </ul>
+                    {% endif %}
+                </li>
+            {% endrecursetree %}
+
+        </ul>
+    </div>
+    <div id="main" class="product-list">
+        <h1>{% if category %}{{ category.name }}{% else %}Товары{% endif %}</h1>
+        {% for product in products %}
+            <div class="item">
+                <a href="{{ product.get_absolute_url }}">
+                    <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
+                </a>
+                <a href="{{ product.get_absolute_url }}">{{ product.name }}</a><br>
+                {{ product.price }} ₽
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
