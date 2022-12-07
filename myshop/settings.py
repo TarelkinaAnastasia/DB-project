@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_cleanup.apps.CleanupConfig',
     'django_mptt_admin',
     'mptt',
     'shop',
@@ -156,6 +157,30 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 CART_SESSION_ID = 'cart'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+DJANGORESIZED_DEFAULT_SIZE = [600, 500]
+DJANGORESIZED_DEFAULT_QUALITY = 75
+DJANGORESIZED_DEFAULT_KEEP_META = True
+DJANGORESIZED_DEFAULT_FORCE_FORMAT = 'JPEG'
+DJANGORESIZED_DEFAULT_FORMAT_EXTENSIONS = {'JPEG': ".jpg"}
+DJANGORESIZED_DEFAULT_NORMALIZE_ROTATION = True
+
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 #CELERY_BROKER_URL = 'amqp://guest:guest@rabbit:5672/%2F'
+
+CELERY_BROKER_URL = 'amqp://guest@localhost:5672//'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'Europe/Moscow'
+
+EMAIL_BACKEND ='django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+
+EMAIL_PORT = 587
+
+EMAIL_HOST_USER = 'tea.world.teashop@gmail.com'
+
+EMAIL_HOST_PASSWORD = 'epspyabtuhpdoxou'  # DBprojectTeashop
+DEFAULT_FROM_EMAIL = 'tea.world.teashop@gmail.com'

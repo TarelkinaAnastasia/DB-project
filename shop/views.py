@@ -10,7 +10,8 @@ def product_list(request, category_slug=None):
     if category_slug:
         category = get_object_or_404(Category, slug=category_slug)
         if category.level == 0:
-            subcategories = categories.filter(parent_id=category.id)
+            subcategories = list(categories.filter(parent_id=category.id))
+            subcategories.append(category)
             products = products.filter(category__in=subcategories)
         else:
             products = products.filter(category=category)

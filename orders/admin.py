@@ -20,7 +20,10 @@ class OrderAdmin(admin.ModelAdmin):
     inlines = [OrderItemInline]
 
     def has_delete_permission(self, request, obj=None):
-        # Disable delete
+        if not obj:
+            return False
+        elif obj.paid:
+            return super().has_delete_permission(request, obj)
         return False
 
 admin.site.register(Order, OrderAdmin)

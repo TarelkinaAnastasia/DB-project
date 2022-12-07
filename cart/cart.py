@@ -28,12 +28,12 @@ class Cart(object):
         Добавить продукт в корзину или обновить его количество.
         """
         product_id = str(product.id)
-        #print("cart = ", self.cart[product_id])
+        # print("cart = ", self.cart[product_id])
 
         if product_id not in self.cart:
             self.cart[product_id] = {'quantity': 0,
                                      'price': str(product.price)}
-        #print(update_quantity)
+        # print(update_quantity)
         if update_quantity:
             self.cart[product_id]['quantity'] = quantity
         else:
@@ -42,16 +42,14 @@ class Cart(object):
         self.save()
 
     def save(self):
-        # Обновление сессии cart
         self.session[settings.CART_SESSION_ID] = self.cart
-        # Отметить сеанс как "измененный", чтобы убедиться, что он сохранен
         self.session.modified = True
 
-    def remove(self, product):
+    def remove(self, product_id):
         """
         Удаление товара из корзины.
         """
-        product_id = str(product.id)
+        product_id = str(product_id)
         if product_id in self.cart:
             del self.cart[product_id]
             self.save()
