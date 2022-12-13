@@ -1,0 +1,104 @@
+﻿<ISSPECS>
+  <DESCRIPTION>
+    <TITLE>Tea shop</TITLE>
+    <SUBJ>Магазин чая</SUBJ>
+  </DESCRIPTION>
+  <DATA>
+    <ENTITY ent_id="shop_category">
+      <PROPERTY>id</PROPERTY>
+      <PROPERTY>name</PROPERTY>
+      <PROPERTY>slug</PROPERTY>
+      <PROPERTY>lft</PROPERTY>
+      <PROPERTY>rght</PROPERTY>
+      <PROPERTY>tree_id</PROPERTY>
+      <PROPERTY>level</PROPERTY>
+      <PROPERTY>parent_id</PROPERTY>
+    </ENTITY>
+    <ENTITY ent_id="shop_product">
+      <PROPERTY>id</PROPERTY>
+      <PROPERTY>name</PROPERTY>
+      <PROPERTY>slug</PROPERTY>
+      <PROPERTY>image</PROPERTY>
+      <PROPERTY>description</PROPERTY>
+      <PROPERTY>price</PROPERTY>
+      <PROPERTY>stock</PROPERTY>
+      <PROPERTY>available</PROPERTY>
+      <PROPERTY>created</PROPERTY>
+      <PROPERTY>updated</PROPERTY>
+      <PROPERTY>category_id</PROPERTY>
+    </ENTITY>
+    <ENTITY ent_id="orders_order">
+      <PROPERTY>id</PROPERTY>
+      <PROPERTY>f_name</PROPERTY>
+      <PROPERTY>l_name</PROPERTY>
+      <PROPERTY>created</PROPERTY>
+      <PROPERTY>updated</PROPERTY>
+      <PROPERTY>address</PROPERTY>
+      <PROPERTY>email</PROPERTY>
+      <PROPERTY>city</PROPERTY>
+      <PROPERTY>paid</PROPERTY>
+      <PROPERTY>postal_code</PROPERTY>
+    </ENTITY>
+    <ENTITY ent_id="orders_orderitem">
+      <PROPERTY>id</PROPERTY>
+      <PROPERTY>price</PROPERTY>
+      <PROPERTY>quantity</PROPERTY>
+      <PROPERTY>order_id</PROPERTY>
+      <PROPERTY>product_id</PROPERTY>
+    </ENTITY>
+    <ENTITY ent_id="django_session">
+      <PROPERTY>django_session_id</PROPERTY>
+      <PROPERTY>session_data</PROPERTY>
+      <PROPERTY>expire_date</PROPERTY>
+    </ENTITY>
+
+    <RELATIONSHIPS ent_ids = "shop_category shop_product">
+      <PROPERTY>ONE TO MANY</PROPERTY>
+    </RELATIONSHIPS>
+    <RELATIONSHIPS ent_ids = "shop_category shop_category">
+      <PROPERTY>ONE TO MANY</PROPERTY>
+    </RELATIONSHIPS>
+    <RELATIONSHIPS ent_ids = "shop_product orders_orderitem">
+      <PROPERTY>ONE TO MANY</PROPERTY>
+    </RELATIONSHIPS>
+    <RELATIONSHIPS ent_ids = "orders_order orders_orderitem">
+      <PROPERTY>ONE TO MANY</PROPERTY>
+    </RELATIONSHIPS>
+    <CONSTRAINT> Ограничение NOT NULL повсеместно</CONSTRAINT>
+  </DATA>
+  <ROLES>
+    <ROLE>
+      <TITLE>VISITER</TITLE>
+      <RESPOSIBILITY>Добавление товара в корзину</RESPOSIBILITY>
+      <RESPOSIBILITY>Оформление заказа</RESPOSIBILITY>
+      <TOTALUSERS>10000</TOTALUSERS>
+    </ROLE>
+    <ROLE>
+      <TITLE>STAFF</TITLE>
+      <RESPOSIBILITY>Добавление, изменение, удаление, просмотр разрешений персонала</RESPOSIBILITY>
+      <RESPOSIBILITY>Изменение, удаление, добавление групп персонала</RESPOSIBILITY>
+      <RESPOSIBILITY>Добавление, изменение, удаление пользователя</RESPOSIBILITY>
+      <RESPOSIBILITY>Добавление,изменение, удаление категории</RESPOSIBILITY>
+      <RESPOSIBILITY>Добавление, изменение, удаление товара</RESPOSIBILITY>
+      <RESPOSIBILITY>Удаление заказа</RESPOSIBILITY>
+      <RESPOSIBILITY>Просмотр заказа, элементов заказа</RESPOSIBILITY>
+      <TOTALUSERS>10</TOTALUSERS>
+    </ROLE>
+    <ROLE>
+      <TITLE>SUPERUSER</TITLE>
+      <RESPOSIBILITY>Все разрешения персонала</RESPOSIBILITY>
+      <TOTALUSERS>1</TOTALUSERS>
+    </ROLE>
+  </ROLES>
+  <TECHSPEC>
+    <TYPE>Web-development</TYPE>
+    <DEVTOOLS>
+      <DEV>Python(Django)</DEV>
+    </DEVTOOLS>
+    <DBMS>
+      <TITLE>PostgreSQL</TITLE>
+      <VERSION>14</VERSION>
+      <REASONING>Наличие документации и материалов в открытом доступе.</REASONING>
+    </DBMS>
+  </TECHSPEC>
+</ISSPECS>
