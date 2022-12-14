@@ -166,7 +166,7 @@ DJANGORESIZED_DEFAULT_NORMALIZE_ROTATION = True
 
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-#CELERY_BROKER_URL = 'amqp://guest:guest@rabbit:5672/%2F'
+CELERY_BROKER_URL = 'amqp://guest:guest@rabbit:5672/%2F'
 
 CELERY_BROKER_URL = 'amqp://guest@localhost:5672//'
 CELERY_ACCEPT_CONTENT = ['application/json']
@@ -175,12 +175,12 @@ CELERY_TASK_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'Europe/Moscow'
 
 EMAIL_BACKEND ='django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.mail.ru'
+EMAIL_USE_SSL = True
+# EMAIL_USE_TLS = True
+EMAIL_PORT = 465
 
-EMAIL_PORT = 587
+EMAIL_HOST_USER = 'tea.world.teashop@mail.ru'
 
-EMAIL_HOST_USER = 'tea.world.teashop@gmail.com'
-
-EMAIL_HOST_PASSWORD = 'epspyabtuhpdoxou'  # DBprojectTeashop
-DEFAULT_FROM_EMAIL = 'tea.world.teashop@gmail.com'
+EMAIL_HOST_PASSWORD = 'PWeFYyehnxqAzgHk9HS7'
+DEFAULT_FROM_EMAIL = 'tea.world.teashop@mail.ru'

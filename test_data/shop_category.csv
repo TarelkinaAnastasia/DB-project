@@ -1,0 +1,18 @@
+id,name,slug,lft,rght,tree_id,level,parent_id
+11,Красный чай,krasnyj-chaj,1,4,5,0,
+9,Белый чай,belyj-chaj,1,6,1,0,
+23,Китай,kitaj,4,5,1,1,9
+20,Индия,indiyawhite,2,3,1,1,9
+1,Зеленый чай,zelenyj-chaj,1,8,3,0,
+4,Россия,rossiyagreen,6,7,3,1,1
+2,Китай,kitajgreen,4,5,3,1,1
+3,Индия,indiyagreeen,2,3,3,1,1
+5,Черный чай,chernyj-chaj,1,4,10,0,
+6,Россия,rossiyablack,2,3,10,1,5
+7,Фруктовый чай,fruktovyj-chaj,1,4,9,0,
+15,Индия,indiyafruits,2,3,9,1,7
+12,Улун,ulun,1,4,8,0,
+16,Китай,kitajulun,2,3,8,1,12
+13,Травяной чай,travyanoj-chaj,1,4,7,0,
+17,Индия,indiyagrass,2,3,7,1,13
+18,Индия,indiyared,2,3,5,1,11

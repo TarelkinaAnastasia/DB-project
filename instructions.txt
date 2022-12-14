@@ -1,0 +1,39 @@
+1) Установить RabbitMQ с официального сайта https://www.rabbitmq.com/install-windows.html
+2) В командной строке RabbitMQ запустить брокер сообщений командой 
+.\rabbitmq-server start
+3) Создать окружение anaconda для проекта
+conda create -n myshop_test python==3.9 -y
+conda activate myshop_test
+4) Установить необходимые библиотеки
+pip install django==4.0.2 pillow==9.0.1 celery==5.2.7 django-mptt==0.14.0 django-mptt-admin==2.3.0 django-resized==1.0.2
+5) В postgresql необходимо создать базу данных для проекта, исполнив запрос
+CREATE DATABASE myshop_test
+    WITH
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'Russian_Russia.1251'
+    LC_CTYPE = 'Russian_Russia.1251'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1
+    IS_TEMPLATE = False;
+6) Настроить подключение к базе данных, заполнив настройки 
+NAME - название БД
+USER - имя пользователя БД
+PASSWORD - пароль
+HOST, PORT - хост и порт подключения
+в DATABASES файла myshop\settings.py
+7) Настроить отправку почты, заполнив настройки в файле myshop\settings.py
+EMAIL_HOST_USER, EMAIL_HOST_PASSWORD - логин и пароль для авторизации 
+DEFAULT_FROM_EMAIL - адрес, с которого письма должны отправляться
+8) Создать миграции
+python manage.py makemigrations
+python manage.py migrate
+9) Создать суперпользователя
+python manage.py createsuperuser
+10) Заполнить таблицы категорий и товаров тестовыми данными, выполнив в psql в папке с проектом команды
+\copy shop_category FROM '\test_data\shop_category.csv' DELIMITER ',' CSV HEADER
+\copy shop_product FROM '\test_data\shop_product.csv' DELIMITER ',' CSV HEADER
+11) Перейти в директорию проекта myshop и запустить celery командой 
+celery -A myshop worker -l info -P eventlet
+12) Запустить сервер
+python manage.py runserver

@@ -15,7 +15,6 @@ class Cart(object):
         """
         Инициализируем корзину
         """
-        #print("reqCart  ", request)
         self.session = request.session
         cart = self.session.get(settings.CART_SESSION_ID)
         if not cart:
@@ -28,12 +27,10 @@ class Cart(object):
         Добавить продукт в корзину или обновить его количество.
         """
         product_id = str(product.id)
-        # print("cart = ", self.cart[product_id])
 
         if product_id not in self.cart:
             self.cart[product_id] = {'quantity': 0,
                                      'price': str(product.price)}
-        # print(update_quantity)
         if update_quantity:
             self.cart[product_id]['quantity'] = quantity
         else:
@@ -60,7 +57,6 @@ class Cart(object):
         Перебор элементов в корзине и получение продуктов из базы данных.
         """
         product_ids = self.cart.keys()
-        print(self.cart)
         # получение объектов product и добавление их в корзину
         products = Product.objects.filter(id__in=product_ids)
         for product in products:
